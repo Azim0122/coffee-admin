@@ -36,15 +36,7 @@
         <div class="field"><label>Мин. остаток по умолчанию для новых товаров</label><input class="input num" id="sm" type="number" min="0" value="${s.lowDefault}"></div>
         <button class="btn btn-primary" id="save">Сохранить</button>
       </div>
-      <div class="card"><div class="card-title">Данные</div>
-        <div class="storage"><div class="kv"><span>Продаж</span><b class="num">${H.nf(st.sales.length)}</b></div><div class="kv"><span>Товаров / клиентов</span><b class="num">${st.products.length} / ${st.customers.length}</b></div><div class="kv"><span>Занято в браузере</span><b class="num">${(used / 1048576).toFixed(2).replace('.', ',')} МБ из ~5 МБ</b></div><div class="progress"><i style="width:${Math.min(100, used / 5242880 * 100)}%"></i></div></div>
-        <div class="hint">Данные хранятся в этом браузере. Регулярно скачивай резервную копию.</div>
-        <button class="btn" id="bk">${icon('download')} Скачать резервную копию</button>
-        <label class="btn">${icon('upload')} Восстановить из файла<input type="file" id="rs" accept=".json" hidden></label>
-        <button class="btn" id="arch">Архивировать продажи старше 90 дней</button>
-        <button class="btn" id="fresh">Начать работу с нуля (оставить товары и сотрудников)</button>
-        <button class="btn" id="demo">Сбросить на демо-данные</button>
-      </div>
+    
       <div class="card"><div class="card-title">Облако и устройства</div>
         ${App.sync.enabled ? `<div class="kv"><span>Статус</span><b id="cloudSt">${({ ok: '🟢 синхронизировано', saving: 'сохраняется…', offline: 'нет сети', error: 'ошибка', off: 'локально' })[App.sync.status()]}</b></div><div class="kv"><span>Аккаунт кафе</span><b id="cloudEmail">…</b></div><div class="hint">Все устройства, вошедшие в этот аккаунт, видят одни и те же продажи, склад и смены в реальном времени.</div><button class="btn btn-ghost-red" id="cloudOut">Выйти из аккаунта кафе на этом устройстве</button>`
           : `<div class="hint">Облако не подключено: данные хранятся только в этом браузере. Чтобы работать с нескольких устройств, заполни <b>js/config.js</b> данными Supabase.</div>`}
